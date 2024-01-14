@@ -1,0 +1,64 @@
+.App {
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 5px;
+  align-items: center;
+  min-width: 400px;
+}
+
+.week {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.day {
+  width: 25px;
+  height: 25px;
+}
+
+.week-number {
+  color: gray;
+  padding-right: 5px;
+}
+
+.day-ud {
+  width: 25px;
+  height: 25px;
+  background: orange;
+}
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0 15px;
+}
+
+.day-of {
+  width: 25px;
+  height: 25px;
+  background: pink;
+}
+
+.calendar-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+
+.calendar-select {
+  width: 140px;
+}
+
+.logo {
+  width: 64px;
+  margin: 5px;
+
+}
