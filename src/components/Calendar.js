@@ -46,13 +46,15 @@ export default function Calendar(props) {
     return (
         <div className="calendar">
             <div className="calendar-form">
-                <select onChange={props.onSmenaChange} className="calendar-select smena">
+                <select onChange={props.onSmenaChange} className="calendar-select smena" value={'Смена ' + (props.smena+1)}>
                     <option>Смена 1</option>
                     <option>Смена 2</option>
                     <option>Смена 3</option>
                     <option>Смена 4</option>
                 </select>
-                <select onChange={props.onOddChange} className="calendar-select odd">
+                <select onChange={props.onOddChange} className="calendar-select odd"
+                    value={props.odd===0?'Четная':'Нечетная' + ' УД'}
+                >
                     <option>Четная УД</option>
                     <option>Нечетная УД</option>
                 </select>
