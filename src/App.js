@@ -7,8 +7,8 @@ import Settings from './components/Settings';
 
 function App() {
 
-  let [smena, setSmena] = useState(Settings(null).smena);
-  let [odd, setOdd] = useState(Settings(null).odd);
+  let [smena, setSmena] = useState(0);
+  let [odd, setOdd] = useState(0);
 
   function onSmenaChange(e) {
     setSmena(e.target.selectedIndex);
