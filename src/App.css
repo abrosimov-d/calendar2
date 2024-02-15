@@ -15,6 +15,10 @@
   gap: 15px;
 }
 
+.week-hidden {
+  display: none;
+}
+
 .day {
   width: 25px;
   height: 25px;

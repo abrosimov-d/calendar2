@@ -10,7 +10,10 @@ export default function Calendar(props) {
         let weekNumber = Math.floor((week[6].getDate() -1 ) / 7) + 1;
         let udClass = (weekNumber % 2 != props.odd)?'day-of':'';
         let russianMonths = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек',]
-        return <div className="week"><div className="week-number">{weekNumber}</div>{week.map(e => {
+        let today = addDays(new Date(), -7)
+        let hiddenWeek = (week[0].valueOf() < today.valueOf())?"week-hidden":""
+        hiddenWeek = props.currentWeek?hiddenWeek:""
+        return <div className={"week " + hiddenWeek} ><div className="week-number">{weekNumber}</div>{week.map(e => {
             return <div className={e.className!='day-ud'?e.className:e.className + ' ' +udClass}>{e.getDate()}</div>;
         })}
         {weekNumber==1?<div className="month-name">{russianMonths[week[6].getMonth()]}`{week[6].getYear()-100}</div>:''}
@@ -61,6 +64,10 @@ export default function Calendar(props) {
                 <div className="day-of">ОФ</div>
                 <div className="day-ud">УД</div>
             </div>
+            <label>
+                <input className="current-week" onChange={props.onCurrentWeekChange} checked={props.currentWeek} type="checkbox"/>
+                <span class="checkable">Текущая неделя</span>
+            </label>
             {render()}
             </div>        
     )

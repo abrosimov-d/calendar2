@@ -9,6 +9,7 @@ function App() {
 
   let [smena, setSmena] = useState(Settings(null).smena);
   let [odd, setOdd] = useState(Settings(null).odd);
+  let [currentWeek, setCurrentWeek] = useState(Settings(null).currentWeek)
 
   function onSmenaChange(e) {
     setSmena(e.target.selectedIndex);
@@ -24,6 +25,13 @@ function App() {
     Settings(settings);
   }
 
+  function onCurrentWeekChange(e) {
+    setCurrentWeek(e.target.checked)
+    let settings = Settings(null);
+    settings.currentWeek = e.target.checked?1:0;
+    Settings(settings);
+  }
+
   useEffect(() => {
     //setSmena(Settings(null).smena);
     //setOdd(Settings(null).odd);
@@ -33,7 +41,14 @@ function App() {
   return (
     <div className="App">
       <img src='./logo512.png' className='logo'></img>
-      <Calendar smena={smena} odd={odd} onSmenaChange={onSmenaChange} onOddChange={onOddChange}/>
+      <Calendar 
+        smena={smena} 
+        odd={odd}
+        currentWeek={currentWeek} 
+        onSmenaChange={onSmenaChange} 
+        onOddChange={onOddChange}
+        onCurrentWeekChange={onCurrentWeekChange}
+        />
       <Footer/>
     </div>
   );
