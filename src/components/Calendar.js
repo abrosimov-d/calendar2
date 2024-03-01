@@ -10,11 +10,18 @@ export default function Calendar(props) {
         let weekNumber = Math.floor((week[6].getDate() -1 ) / 7) + 1;
         let udClass = (weekNumber % 2 != props.odd)?'day-of':'';
         let russianMonths = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек',]
-        let today = addDays(new Date(), -7)
-        let hiddenWeek = (week[0].valueOf() < today.valueOf())?"week-hidden":""
+        let today7 = addDays(new Date(), -7);
+        let today = new Date();
+        let todayClass = '';
+        let hiddenWeek = (week[0].valueOf() < today7.valueOf())?"week-hidden":""
         hiddenWeek = props.currentWeek?hiddenWeek:""
         return <div className={"week " + hiddenWeek} ><div className="week-number">{weekNumber}</div>{week.map(e => {
-            return <div className={e.className!='day-ud'?e.className:e.className + ' ' +udClass}>{e.getDate()}</div>;
+            if ((e.getDate() === today.getDate()) && (e.getMonth() === today.getMonth()) && (e.getYear() === today.getYear())) {
+                todayClass = 'today';
+            } else {
+                todayClass = '';
+            }
+            return <div className={(e.className!='day-ud'?e.className:e.className + ' ' + udClass) + ' ' + todayClass}>{e.getDate()}</div>;
         })}
         {weekNumber==1?<div className="month-name">{russianMonths[week[6].getMonth()]}`{week[6].getYear()-100}</div>:''}
         </div>
