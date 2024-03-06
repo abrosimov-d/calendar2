@@ -49,6 +49,9 @@ function App() {
 
   function parseVacationsString(vacationString) {
     let result = [];
+    if (!vacationString) {
+      return result;
+    }
     let parts = vacationString.split(';');
     for (let i = 0; i < parts.length; i++) {
       let part = {
