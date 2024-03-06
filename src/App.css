@@ -64,11 +64,31 @@
 .logo {
   width: 64px;
   margin: 5px;
-
 }
 
 .today {
-  border-color: pink;
-  border-width: 2px;
-  border-style: dotted;
+  outline-width: 2.5px;
+  outline-color: gray;
+  outline-style: dotted;
+}
+
+.day-vac {
+  background: greenyellow;
+}
+
+.vacation {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.line {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.vacation-input {
+  width: 300px;
 }
