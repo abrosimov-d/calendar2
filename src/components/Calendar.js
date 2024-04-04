@@ -3,7 +3,10 @@ import {Dates} from './Dates.js' //import {compareDates} from './Dates'
 export default function Calendar(props) {
 
     function renderWeek(week) {
-        let weekNumber = Math.floor((week[6].getDate() -1 ) / 7) + 1;
+        //let weekNumber = Math.floor((week[6].getDate() -1 ) / 7) + 1;
+        let firstDayOfYear = new Date(week[0].getFullYear(), 0, 1)
+        let diff = Dates.difference(week[0], firstDayOfYear)
+        let weekNumber = Math.floor(diff / 7) + 1
         let udClass = (weekNumber % 2 != props.odd)?'day-of':'';
         let russianMonths = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек',]
         let today7 = Dates.addDays(new Date(), -7);
@@ -11,15 +14,18 @@ export default function Calendar(props) {
         let todayClass = '';
         let hiddenWeek = (week[0].valueOf() < today7.valueOf())?"week-hidden":""
         hiddenWeek = props.currentWeek?hiddenWeek:""
+        let startMobthFlag = false;
+
         return <div className={"week " + hiddenWeek} ><div className="week-number">{weekNumber}</div>{week.map(e => {
             let vacationFlag = false;
             todayClass = Dates.compareDates(today, e)?'today':'';
             props.vacations.forEach(vacation => {
                 vacationFlag = vacationFlag || Dates.inRange(e, Dates.fromString(vacation.startDate), vacation.len);
             })
+            startMobthFlag = startMobthFlag || e.getDate()==1
             return <div className={(e.className!='day-ud'?e.className:e.className + ' ' + udClass) + ' ' + todayClass + ' ' + (vacationFlag?'day-vac':'')}>{e.getDate()}</div>;
         })}
-        {weekNumber==1?<div className="month-name">{russianMonths[week[6].getMonth()]}`{week[6].getYear()-100}</div>:''}
+        {startMobthFlag?<div className="month-name">{russianMonths[week[6].getMonth()]}`{week[6].getYear()-100}</div>:''}
         </div>
     }
 

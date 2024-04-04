@@ -29,6 +29,12 @@ export default class Dates {
         let result = (date.valueOf() >= startDate.valueOf()) && (date.valueOf() < endDate.valueOf())
         return result;
     }
+
+    static difference(date1, date2) {
+        let result = Math.abs(date2 - date1) / (1000*60*60*24);
+        return result;
+
+    }
 }
 
 export {Dates}
