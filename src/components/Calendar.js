@@ -14,7 +14,7 @@ export default function Calendar(props) {
         let todayClass = '';
         let hiddenWeek = (week[0].valueOf() < today7.valueOf())?"week-hidden":""
         hiddenWeek = props.currentWeek?hiddenWeek:""
-        let startMobthFlag = false;
+        let startMonthFlag = false;
 
         return <div className={"week " + hiddenWeek} ><div className="week-number">{weekNumber}</div>{week.map(e => {
             let vacationFlag = false;
@@ -22,10 +22,10 @@ export default function Calendar(props) {
             props.vacations.forEach(vacation => {
                 vacationFlag = vacationFlag || Dates.inRange(e, Dates.fromString(vacation.startDate), vacation.len);
             })
-            startMobthFlag = startMobthFlag || e.getDate()==1
+            startMonthFlag = startMonthFlag || e.getDate()==1
             return <div className={(e.className!='day-ud'?e.className:e.className + ' ' + udClass) + ' ' + todayClass + ' ' + (vacationFlag?'day-vac':'')}>{e.getDate()}</div>;
         })}
-        {startMobthFlag?<div className="month-name">{russianMonths[week[6].getMonth()]}`{week[6].getYear()-100}</div>:''}
+        {startMonthFlag?<div className="month-name">{russianMonths[week[6].getMonth()]}`{week[6].getYear()-100}</div>:''}
         </div>
     }
 
@@ -50,7 +50,7 @@ export default function Calendar(props) {
     let dates = [];
     let startDate = new Date(2024, 0, 1);
     startDate = Dates.addDays(startDate, -startDate.getDay()+1)
-    for (let i = 0; i <= 400; i++) {
+    for (let i = 0; i <= 600; i++) {
         let current = Dates.addDays(startDate, i);
         current.className = (((i + 0) % 4) == props.smena)?'day-ud':'day';
         dates.push(current);
