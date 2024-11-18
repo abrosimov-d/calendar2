@@ -50,7 +50,7 @@ export default function Calendar(props) {
     let dates = [];
     let startDate = new Date(2024, 0, 1);
     startDate = Dates.addDays(startDate, -startDate.getDay()+1)
-    for (let i = 0; i <= 600; i++) {
+    for (let i = 0; i <= 2000; i++) {
         let current = Dates.addDays(startDate, i);
         current.className = (((i + 0) % 4) == props.smena)?'day-ud':'day';
         dates.push(current);
