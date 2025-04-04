@@ -7,7 +7,7 @@ export default function Calendar(props) {
         let firstDayOfYear = new Date(week[0].getFullYear(), 0, 1)
         let diff = Dates.difference(week[0], firstDayOfYear)
         let weekNumber = Math.floor(diff / 7) + 1
-        let udClass = (weekNumber % 2 != props.odd)?'day-of':'';
+        let udClass = (weekNumber % 2 == props.odd)?'day-of':'';    // FIX ODD HERE
         let russianMonths = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек',]
         let today7 = Dates.addDays(new Date(), -7);
         let today = new Date();
@@ -60,10 +60,10 @@ export default function Calendar(props) {
         <div className="calendar">
             <div className="calendar-form">
                 <select onChange={props.onSmenaChange} className="calendar-select smena" value={'Смена ' + (props.smena+1)}>
-                    <option>Смена 1 (2)</option>
-                    <option>Смена 2 (3)</option>
-                    <option>Смена 3 (4)</option>
-                    <option>Смена 4 (1)</option>
+                    <option>Смена 1</option>
+                    <option>Смена 2</option>
+                    <option>Смена 3</option>
+                    <option>Смена 4</option>
                 </select>
                 <select onChange={props.onOddChange} className="calendar-select odd"
                     value={props.odd===0?'Четная':'Нечетная' + ' УД'}
