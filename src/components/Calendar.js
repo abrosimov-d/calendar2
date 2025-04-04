@@ -48,7 +48,7 @@ export default function Calendar(props) {
     }
 
     let dates = [];
-    let startDate = new Date(2024, 0, 1);
+    let startDate = new Date(2025, 0, 1);
     startDate = Dates.addDays(startDate, -startDate.getDay()+1)
     for (let i = 0; i <= 1000; i++) {
         let current = Dates.addDays(startDate, i);
@@ -60,10 +60,10 @@ export default function Calendar(props) {
         <div className="calendar">
             <div className="calendar-form">
                 <select onChange={props.onSmenaChange} className="calendar-select smena" value={'Смена ' + (props.smena+1)}>
-                    <option>Смена 1</option>
-                    <option>Смена 2</option>
-                    <option>Смена 3</option>
-                    <option>Смена 4</option>
+                    <option>Смена 1 (2)</option>
+                    <option>Смена 2 (3)</option>
+                    <option>Смена 3 (4)</option>
+                    <option>Смена 4 (1)</option>
                 </select>
                 <select onChange={props.onOddChange} className="calendar-select odd"
                     value={props.odd===0?'Четная':'Нечетная' + ' УД'}
