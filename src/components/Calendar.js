@@ -48,7 +48,7 @@ export default function Calendar(props) {
     }
 
     let dates = [];
-    let startDate = new Date(2025, 0, 1);
+    let startDate = new Date(2026, 0, 1);
     startDate = Dates.addDays(startDate, -startDate.getDay()+1)
     for (let i = 0; i <= 1000; i++) {
         let current = Dates.addDays(startDate, i);
